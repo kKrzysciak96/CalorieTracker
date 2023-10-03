@@ -28,14 +28,14 @@ import com.plcoding.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun GoalScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GoalViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     LaunchedEffect(key1 = Unit, block = {
         viewModel.uiEvent.collect() { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }
@@ -59,10 +59,10 @@ fun GoalScreen(
             Row() {
                 SelectableButton(
                     text = stringResource(id = R.string.lose),
-                    isSelected = viewModel.goal is GoalType.LooseWeight,
+                    isSelected = viewModel.goal is GoalType.LoseWeight,
                     color = MaterialTheme.colors.primaryVariant,
                     selectedTextColor = Color.White,
-                    onClick = { viewModel.onGoalClick(GoalType.LooseWeight) },
+                    onClick = { viewModel.onGoalClick(GoalType.LoseWeight) },
                     textStyle = MaterialTheme.typography.button.copy(fontWeight = FontWeight.Normal),
                 )
                 Spacer(modifier = Modifier.width(spacing.spaceMedium))
