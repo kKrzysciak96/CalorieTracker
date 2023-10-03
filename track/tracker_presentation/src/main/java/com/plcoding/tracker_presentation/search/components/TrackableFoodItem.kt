@@ -31,7 +31,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
@@ -55,6 +58,7 @@ fun TrackableFoodItem(
 ) {
     val food = trackableFoodUiState.food
     val spacing = LocalSpacing.current
+    val context = LocalContext.current
     Column(
         modifier = modifier
             .clip(RoundedCornerShape(5.dp))
@@ -165,6 +169,9 @@ fun TrackableFoodItem(
                             )
                             .alignBy(LastBaseline)
                             .padding(spacing.spaceMedium)
+                            .semantics {
+                                contentDescription = context.getString(R.string.amount)
+                            }
                     )
                     Spacer(modifier = Modifier.width(spacing.spaceSmall))
                     Text(
@@ -176,7 +183,10 @@ fun TrackableFoodItem(
                     )
                 }
                 IconButton(onClick = onTrack, enabled = trackableFoodUiState.amount.isNotBlank()) {
-                    Icon(imageVector = Icons.Default.Check, contentDescription = null)
+                    Icon(
+                        imageVector = Icons.Default.Check,
+                        contentDescription = stringResource(id = R.string.track)
+                    )
                 }
             }
         }

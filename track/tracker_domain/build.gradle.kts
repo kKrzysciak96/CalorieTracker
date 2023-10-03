@@ -11,5 +11,6 @@ android {
 
 dependencies {
     implementation(project(Modules.core))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
 }

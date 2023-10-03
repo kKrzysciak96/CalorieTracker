@@ -18,6 +18,7 @@ dependencies {
     implementation(Retrofit.retrofit)
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.moshiConverter)
+    testImplementation("junit:junit:4.12")
 
 
     "kapt"(Room.roomCompiler)

@@ -50,7 +50,7 @@ fun ExpandableMeal(
         ) {
             Image(
                 painter = painterResource(id = meal.drawable),
-                contentDescription = null,
+                contentDescription = meal.name.asString(context),
                 modifier = Modifier.size(50.dp)
             )
             Spacer(modifier = Modifier.width(spacing.spaceMedium))

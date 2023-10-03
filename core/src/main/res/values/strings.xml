@@ -58,4 +58,5 @@
     <string name="error_not_100_percent">The values must add up to 100%</string>
     <string name="your_goal">Your goal:</string>
     <string name="delete">Delete</string>
+    <string name="amount">Amount</string>
 </resources>
